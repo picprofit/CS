@@ -1,3 +1,32 @@
 body {
   font-family: Roboto, sans-serif;
 }
+
+
+.boxzilla {
+  -webkit-box-shadow: -5px -5px 10px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: -5px -5px 10px -4px rgba(0,0,0,0.75);
+  box-shadow: -5px -5px 10px -4px rgba(0,0,0,0.75);
+  z-index: 9999999;
+}
+.boxzilla h5 {
+  color: #003343;
+  font-size: 20px;
+}
+.boxzilla h6 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #003343;
+}
+.cover-wrapper {
+  display: block;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.cover-wrapper img {
+  margin-bottom: 0;
+  width: 130px;
+  height: auto;
+}
