@@ -46,7 +46,7 @@ const Header = ({ classes, title }) => {
         position="static"
         elevation={0}
       >
-        <Box pt={2}>
+        <Box pt={2} pb={2}>
           <Toolbar>
             <Grid container alignItems="center" spacing={1}>
               <Grid item xs>
@@ -64,20 +64,6 @@ const Header = ({ classes, title }) => {
             </Grid>
           </Toolbar>
         </Box>
-      </AppBar>
-      <AppBar
-        component="div"
-        className={classes.secondaryBar}
-        color="primary"
-        position="static"
-        elevation={0}
-      >
-        <Tabs value={0} textColor="inherit">
-          <Tab textColor="inherit" label="Users" />
-          <Tab textColor="inherit" label="Sign-in method" />
-          <Tab textColor="inherit" label="Templates" />
-          <Tab textColor="inherit" label="Usage" />
-        </Tabs>
       </AppBar>
     </>
   );

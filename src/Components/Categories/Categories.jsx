@@ -1,31 +1,47 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
-import getCategories from '../queries/getCategories';
+import clsx from 'clsx';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
+import getCategories from '../queries/getCategories';
 import Loader from '../Loader';
 
-const Categories = ({ data, setTitle }) => {
+const Categories = ({ data, classes }) => {
   const { loading, error, categories } = data;
   if (loading) {
-    setTitle('Categories are loading..');
     return <Loader />;
   }
   if (error) {
-    setTitle('Failed to load category');
     return <>Oops, smth went wrong!</>;
   }
+  // className={clsx(classes.item, active && classes.itemActiveItem)}
   return (
-    <ul>
+    <>
       {categories.edges.map(item => {
         const { id, name, slug } = item.node;
         return (
-          <li key={id}>
-            <Link to={`/category/${slug}`}>{name}</Link>
-          </li>
+          <React.Fragment key={id}>
+            <ListItem
+              button
+              component={Link}
+              to={`/category/${slug}`}
+              className={classes.item}
+            >
+              <ListItemIcon className={classes.itemIcon}><ArrowForwardIosIcon /></ListItemIcon>
+              <ListItemText
+                classes={{
+                  primary: classes.itemPrimary
+                }}
+              >
+                {name}
+              </ListItemText>
+            </ListItem>
+          </React.Fragment>
         );
       })}
-    </ul>
+    </>
   );
 };
 

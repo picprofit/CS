@@ -8,11 +8,11 @@ import ApolloClient from 'apollo-boost';
 import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
-import Posts from './Posts/Posts';
-import Post from './Post/Post';
-import Categories from './Categories/Categories';
-import Category from './Category/Category';
-import Search from './Search/Search';
+import Posts from './Posts';
+import Post from './Post';
+import NotFound from './NotFound';
+import Category from './Category';
+import Search from './Search';
 import Copyright from './Copyright';
 import theme from '../theme';
 
@@ -92,13 +92,6 @@ const App = ({ classes }) => {
                   />
                   <Route
                     exact
-                    path="/categories"
-                    render={props => (
-                      <Categories {...props} setTitle={setTitle} />
-                    )}
-                  />
-                  <Route
-                    exact
                     path="/category/:slug"
                     render={props => (
                       <Category {...props} setTitle={setTitle} />
@@ -108,6 +101,9 @@ const App = ({ classes }) => {
                     exact
                     path="/search/:slug"
                     render={props => <Search {...props} setTitle={setTitle} />}
+                  />
+                  <Route
+                    render={props => <NotFound {...props} setTitle={setTitle} />}
                   />
                 </Content>
               </main>
