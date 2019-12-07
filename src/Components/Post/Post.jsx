@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
-import { Typography, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
 
 import Loader from '../Loader';
@@ -15,22 +15,22 @@ const ButtonBack = () => {
   );
 };
 
-const Post = props => {
-  const { loading, error, post } = props.data;
+const Post = ({ data, setTitle }) => {
+  const { loading, error, post } = data;
   if (loading) {
+    setTitle('Post is loading..');
     return <Loader />;
   }
   if (error) {
+    setTitle('Failed to load post');
     return <>Oops, smth went wrong!</>;
   }
 
   // console.log(data);
   const { content, title } = post;
+  setTitle(title);
   return (
     <>
-      <Typography align="left" variant="h1">
-        {title}
-      </Typography>
       <ButtonBack />
       <article>{parse(content)}</article>
       <ButtonBack />

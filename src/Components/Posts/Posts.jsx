@@ -7,7 +7,8 @@ import styled from 'styled-components';
 import getPosts from '../queries/getPosts';
 import Loader from '../Loader';
 
-const Posts = ({ data }) => {
+const Posts = ({ data, setTitle }) => {
+  setTitle("Posts");
   const useStyles = makeStyles(theme => ({
     root: {
       width: '100%',

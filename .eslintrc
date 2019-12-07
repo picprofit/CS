@@ -29,7 +29,8 @@
       "error",
       "absolute-first"
     ],
-    "import/newline-after-import": "error"
+    "import/newline-after-import": "error",
+    "react/jsx-props-no-spreading": "off"
   },
   "globals": {
     "window": true,

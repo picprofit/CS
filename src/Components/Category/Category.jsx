@@ -16,14 +16,17 @@ const ButtonBack = () => {
   );
 };
 
-const Category = props => {
-  const { loading, error, posts } = props.data;
+const Category = ({ data, setTitle }) => {
+  const { loading, error, posts } = data;
   if (loading) {
+    setTitle('Category is loading..');
     return <Loader />;
   }
   if (error) {
+    setTitle('Failed to load category');
     return <>Oops, smth went wrong!</>;
   }
+  setTitle('Category');
   return (
     <ul>
       {posts.edges.map(item => {
@@ -39,23 +42,26 @@ const Category = props => {
 };
 
 const GetPostsByCategory = gql`
-    query GetPostsByCategory($slug: String) {
-        posts(where: {categoryName: $slug, orderby: {field: DATE, order: ASC}}, first: 999) {
-            edges {
-                node {
-                    id
-                    title
-                    slug
-                }
-            }
-            pageInfo {
-                endCursor
-                startCursor
-                hasNextPage
-                hasPreviousPage
-            }
+  query GetPostsByCategory($slug: String) {
+    posts(
+      where: { categoryName: $slug, orderby: { field: DATE, order: ASC } }
+      first: 999
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
         }
+      }
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+        hasPreviousPage
+      }
     }
+  }
 `;
 
 export default graphql(GetPostsByCategory, {

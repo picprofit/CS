@@ -5,12 +5,14 @@ import getCategories from '../queries/getCategories';
 
 import Loader from '../Loader';
 
-const Categories = ({ data }) => {
+const Categories = ({ data, setTitle }) => {
   const { loading, error, categories } = data;
   if (loading) {
+    setTitle('Categories are loading..');
     return <Loader />;
   }
   if (error) {
+    setTitle('Failed to load category');
     return <>Oops, smth went wrong!</>;
   }
   return (

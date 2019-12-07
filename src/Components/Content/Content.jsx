@@ -49,7 +49,7 @@ const Content = (props) => {
             <Grid item xs>
               <TextField
                 fullWidth
-                placeholder="Search by email address, phone number, or user UID"
+                placeholder="Search here.."
                 InputProps={{
                   disableUnderline: true,
                   className: classes.searchInput,

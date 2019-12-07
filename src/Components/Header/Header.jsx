@@ -2,15 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import HelpIcon from '@material-ui/icons/Help';
-import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -42,9 +36,7 @@ const styles = theme => ({
   }
 });
 
-function Header(props) {
-  const { classes, onDrawerToggle } = props;
-
+const Header = ({ classes, title }) => {
   return (
     <>
       <AppBar
@@ -59,7 +51,7 @@ function Header(props) {
             <Grid container alignItems="center" spacing={1}>
               <Grid item xs>
                 <Typography color="inherit" variant="h5" component="h1">
-                  Authentication
+                  {title}
                 </Typography>
               </Grid>
               <Grid item>
@@ -89,7 +81,7 @@ function Header(props) {
       </AppBar>
     </>
   );
-}
+};
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
