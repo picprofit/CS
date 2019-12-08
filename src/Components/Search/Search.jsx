@@ -1,60 +1,57 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import { Link } from 'react-router-dom';
-import parse from 'html-react-parser';
+import {
+  AppBar,
+  Toolbar,
+  Grid,
+  TextField,
+  Button,
+  Tooltip,
+  IconButton
+} from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
-import Loader from '../Loader';
-
-const Search = props => {
-  const { loading, error, posts } = props.data;
-  if (loading) {
-    return <Loader />;
-  }
-  if (error) {
-    return <>Oops, smth went wrong!</>;
-  }
-  if(posts.edges.length === 0) {
-    return <>Sorry, nothing found :( </>;
-  }
+const Search = ({classes}) => {
   return (
-    <ul>
-      {posts.edges.map(item => {
-        const { id, title, slug, content } = item.node;
-        return (
-          <li key={id}>
-            <Link to={`/posts/${slug}`}>{title}</Link>
-            {parse(content)}
-          </li>
-        );
-      })}
-    </ul>
+    <AppBar
+      className={classes.searchBar}
+      position="static"
+      color="default"
+      elevation={0}
+    >
+      <Toolbar>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item>
+            <SearchIcon className={classes.block} color="inherit" />
+          </Grid>
+          <Grid item xs>
+            <TextField
+              fullWidth
+              placeholder="Search here.."
+              InputProps={{
+                disableUnderline: true,
+                className: classes.searchInput
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.addUser}
+            >
+              Search
+            </Button>
+            <Tooltip title="Reload">
+              <IconButton>
+                <RefreshIcon className={classes.block} color="inherit" />
+              </IconButton>
+            </Tooltip>
+          </Grid>
+        </Grid>
+      </Toolbar>
+    </AppBar>
   );
 };
 
-const GetPosts = gql`
-  query GetPosts($searchQuery: String) {
-    posts(first: 999, where: {search: $searchQuery, orderby: {field: DATE, order: ASC}}) {
-      edges {
-        node {
-          id
-          title
-          slug
-          content
-        }
-      }
-    }
-  }
-`;
-
-export default graphql(GetPosts, {
-  options: props => {
-    const { query } = props;
-    const searchQuery = query || props.match.params.slug;
-    return {
-      variables: {
-        searchQuery
-      }
-    };
-  }
-})(Search);
+export default Search;
