@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Divider } from '@material-ui/core';
 
-import getPosts from '../queries/getPosts';
+import getPostsQuery from './getPostsQuery';
 import Loader from '../Loader';
 
 const Posts = ({ data, setTitle }) => {
@@ -32,6 +32,6 @@ const Posts = ({ data, setTitle }) => {
   );
 };
 
-export default graphql(getPosts, {
-  options: props => {}
+export default graphql(getPostsQuery, {
+  options: () => {}
 })(Posts);

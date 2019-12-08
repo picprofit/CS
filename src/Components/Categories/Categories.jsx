@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-import getCategories from '../queries/getCategories';
+import getCategoriesQuery from './getCategoriesQuery';
 import Loader from '../Loader';
 
 const Categories = ({ data, classes }) => {
@@ -45,6 +45,6 @@ const Categories = ({ data, classes }) => {
   );
 };
 
-export default graphql(getCategories, {
+export default graphql(getCategoriesQuery, {
   options: props => {}
 })(Categories);

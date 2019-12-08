@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
 
 import Loader from '../Loader';
-import getPostBySlug from '../queries/getPostBySlug';
+import getPostBySlugQuery from './getPostBySlugQuery';
 
 const ButtonBack = () => {
   return (
@@ -39,7 +39,7 @@ const Post = ({ data, setTitle }) => {
   );
 };
 
-export default graphql(getPostBySlug, {
+export default graphql(getPostBySlugQuery, {
   options: props => {
     const { slug } = props.match.params;
     return {

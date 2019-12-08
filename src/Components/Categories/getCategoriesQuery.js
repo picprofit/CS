@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const getCategories = gql`
+const getCategoriesQuery = gql`
     query GetCategories {
         categories(where: {hideEmpty: true}) {
             edges {
@@ -14,4 +14,4 @@ const getCategories = gql`
     }
 `;
 
-export default getCategories;
+export default getCategoriesQuery;

@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const getPosts = gql`
+const getPostsQuery = gql`
     query GetPosts {
         posts(first: 999, where: {orderby: {field: DATE, order: ASC}}) {
             edges {
@@ -20,4 +20,4 @@ const getPosts = gql`
     }
 `;
 
-export default getPosts;
+export default getPostsQuery;

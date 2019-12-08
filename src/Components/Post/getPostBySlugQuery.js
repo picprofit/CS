@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const getPostBySlug = gql`
+const getPostBySlugQuery = gql`
     query GetPostBySlug($slug: String) {
         post: postBy(uri: $slug) {
             id
@@ -10,4 +10,4 @@ const getPostBySlug = gql`
     }
 `;
 
-export default getPostBySlug;
+export default getPostBySlugQuery;
