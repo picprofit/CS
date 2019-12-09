@@ -6,7 +6,7 @@ import { List, ListItem, Divider } from '@material-ui/core';
 import getPostsQuery from './getPostsQuery';
 import Loader from '../Loader';
 
-const Posts = ({ data, setTitle }) => {
+const Posts = ({ data, setTitle, filter = '' }) => {
   setTitle('Posts');
 
   const { loading, error, posts } = data;
@@ -21,6 +21,9 @@ const Posts = ({ data, setTitle }) => {
     <List component="nav" aria-label="contacts">
       {posts.edges.map(item => {
         const { id, title, slug } = item.node;
+        if(!title.includes(filter)) {
+          return null;
+        }
         return (
           <ListItem component={Link} to={`/posts/${slug}`} button key={id}>
             {title}

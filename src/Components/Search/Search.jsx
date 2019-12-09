@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -11,7 +11,8 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
 
-const Search = ({classes}) => {
+const Search = ({ classes }) => {
+  const [searchString, setSearchString] = useState('');
   return (
     <AppBar
       className={classes.searchBar}
@@ -20,6 +21,7 @@ const Search = ({classes}) => {
       elevation={0}
     >
       <Toolbar>
+        <p>Now we&apos;re looking for {searchString}</p>
         <Grid container spacing={2} alignItems="center">
           <Grid item>
             <SearchIcon className={classes.block} color="inherit" />
@@ -31,6 +33,9 @@ const Search = ({classes}) => {
               InputProps={{
                 disableUnderline: true,
                 className: classes.searchInput
+              }}
+              onChange={e => {
+                setSearchString(e.target.value);
               }}
             />
           </Grid>
