@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
@@ -72,4 +73,10 @@ Header.propTypes = {
   onDrawerToggle: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(Header);
+const mapStateToProps = store => {
+  return {
+    title: store.title
+  }
+};
+
+export default connect(mapStateToProps, null)(withStyles(styles)(Header));

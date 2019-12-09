@@ -1,14 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Divider } from '@material-ui/core';
 
+import { setTitle } from '../../actions';
 import getPostsQuery from './getPostsQuery';
 import Loader from '../Loader';
 
-const Posts = ({ data, setTitle, filter = '' }) => {
-  setTitle('Posts');
-
+const Posts = ({ data, onSetTitle, filter = '' }) => {
+  onSetTitle("Posts");
   const { loading, error, posts } = data;
   if (loading) {
     return <Loader />;
@@ -35,6 +36,10 @@ const Posts = ({ data, setTitle, filter = '' }) => {
   );
 };
 
-export default graphql(getPostsQuery, {
+const mapDispatchToProps = dispatch => ({
+  onSetTitle: title => dispatch(setTitle(title))
+});
+
+export default connect(null, mapDispatchToProps)(graphql(getPostsQuery, {
   options: () => {}
-})(Posts);
+})(Posts));
