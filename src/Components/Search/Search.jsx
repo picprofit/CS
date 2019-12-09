@@ -14,7 +14,8 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 
 import { setFilter } from '../../actions';
 
-const Search = ({ classes, onSetFilter }) => {
+const Search = ({ classes, filter, onSetFilter }) => {
+  const ESC_KEY_CODE = 27;
   return (
     <AppBar
       className={classes.searchBar}
@@ -22,46 +23,68 @@ const Search = ({ classes, onSetFilter }) => {
       color="default"
       elevation={0}
     >
-      <Toolbar>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item>
-            <SearchIcon className={classes.block} color="inherit" />
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+        }}
+      >
+        <Toolbar>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item>
+              <SearchIcon className={classes.block} color="inherit" />
+            </Grid>
+            <Grid item xs>
+              <TextField
+                fullWidth
+                placeholder="Print here for live posts filter, or submit to search for posts"
+                InputProps={{
+                  disableUnderline: true,
+                  className: classes.searchInput
+                }}
+                value={filter}
+                onChange={e => {
+                  onSetFilter(e.target.value);
+                }}
+                onKeyDown={e => {
+                  if(e.keyCode === ESC_KEY_CODE) {
+                    onSetFilter('');
+                  }
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.addUser}
+                type="submit"
+              >
+                Search
+              </Button>
+              <Tooltip title="Clear">
+                <IconButton onClick={(e) => {
+                  e.preventDefault();
+                  onSetFilter('');
+                }}>
+                  <RefreshIcon className={classes.block} color="inherit" />
+                </IconButton>
+              </Tooltip>
+            </Grid>
           </Grid>
-          <Grid item xs>
-            <TextField
-              fullWidth
-              placeholder="Print here for live posts filter, or submit to search for posts"
-              InputProps={{
-                disableUnderline: true,
-                className: classes.searchInput
-              }}
-              onChange={e => {
-                onSetFilter(e.target.value);
-              }}
-            />
-          </Grid>
-          <Grid item>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.addUser}
-            >
-              Search
-            </Button>
-            <Tooltip title="Reload">
-              <IconButton>
-                <RefreshIcon className={classes.block} color="inherit" />
-              </IconButton>
-            </Tooltip>
-          </Grid>
-        </Grid>
-      </Toolbar>
+        </Toolbar>
+      </form>
     </AppBar>
   );
+};
+
+const mapStateToProps = store => {
+  return {
+    filter: store.filter
+  }
 };
 
 const mapDispatchToProps = dispatch => ({
   onSetFilter: filter => dispatch(setFilter(filter))
 });
 
-export default connect(null, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
