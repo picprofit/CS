@@ -1,22 +1,14 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
+import { setTitle } from '../../actions';
+import getPostsByCategoryQuery from './getPostsByCategoryQuery';
 
 import Loader from '../Loader';
 
-const ButtonBack = () => {
-  return (
-    <ButtonToolbar>
-      <Link to="/categories/">
-        <Button variant="outline-primary">&larr; Back to categories</Button>
-      </Link>
-    </ButtonToolbar>
-  );
-};
-
-const Category = ({ data, setTitle }) => {
+const Category = ({ data, onSetTitle: setTitle }) => {
   const { loading, error, posts } = data;
   if (loading) {
     setTitle('Category is loading..');
@@ -41,30 +33,11 @@ const Category = ({ data, setTitle }) => {
   );
 };
 
-const GetPostsByCategory = gql`
-  query GetPostsByCategory($slug: String) {
-    posts(
-      where: { categoryName: $slug, orderby: { field: DATE, order: ASC } }
-      first: 999
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug
-        }
-      }
-      pageInfo {
-        endCursor
-        startCursor
-        hasNextPage
-        hasPreviousPage
-      }
-    }
-  }
-`;
+const mapDispatchToProps = dispatch => ({
+  onSetTitle: (title) => dispatch(setTitle(title))
+});
 
-export default graphql(GetPostsByCategory, {
+export default connect(null, mapDispatchToProps)(graphql(getPostsByCategoryQuery, {
   options: props => {
     const { slug } = props.match.params;
     return {
@@ -73,4 +46,4 @@ export default graphql(GetPostsByCategory, {
       }
     };
   }
-})(Category);
+})(Category));
