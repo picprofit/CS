@@ -8,7 +8,7 @@ import { setTitle } from '../../actions';
 import getPostsQuery from './getPostsQuery';
 import Loader from '../Loader';
 
-const Posts = ({ data, onSetTitle, filter = '' }) => {
+const Posts = ({ data, onSetTitle, filter }) => {
   onSetTitle("Posts");
   const { loading, error, posts } = data;
   if (loading) {
@@ -36,10 +36,16 @@ const Posts = ({ data, onSetTitle, filter = '' }) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    filter: state.filter
+  }
+};
+
 const mapDispatchToProps = dispatch => ({
   onSetTitle: title => dispatch(setTitle(title))
 });
 
-export default connect(null, mapDispatchToProps)(graphql(getPostsQuery, {
+export default connect(mapStateToProps, mapDispatchToProps)(graphql(getPostsQuery, {
   options: () => {}
 })(Posts));

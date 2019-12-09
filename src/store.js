@@ -3,7 +3,8 @@ import { compose, createStore } from "redux";
 import rootReducer  from './reducers';
 
 const initialState = {
-  title: 'Home'
+  title: 'Home',
+  filter: ''
 };
 
 const composeEnhancers =
