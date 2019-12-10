@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Divider } from '@material-ui/core';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from 'react-apollo';
 
 import Loader from '../../layout/Loader';
 import { setTitle } from '../../../actions';
