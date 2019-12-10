@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -7,8 +7,9 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import getCategoriesQuery from './getCategoriesQuery';
 import Loader from '../../layout/Loader';
 
-const Categories = ({ data }) => {
-  const { loading, error, categories } = data;
+const Categories = () => {
+  const { loading, error, data } = useQuery(getCategoriesQuery);
+  const { categories } = data;
   if (loading) {
     return <Loader />;
   }
@@ -38,6 +39,4 @@ const Categories = ({ data }) => {
   );
 };
 
-export default graphql(getCategoriesQuery, {
-  options: props => {}
-})(Categories);
+export default Categories;

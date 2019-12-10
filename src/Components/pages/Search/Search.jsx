@@ -2,25 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
-import parse from 'html-react-parser';
 
 import { setTitle } from '../../../actions';
 
 import getPostsQuery from './getPostsQuery';
 
-/*
-  graphql(getPostsQuery, {
-    options: props => {
-      const { search = '' } = props;
-      return {
-        variables: {
-          search
-        }
-      };
-    }
-  })(Search)
-
- */
 import Loader from '../../layout/Loader';
 
 const Search = ({ search, onSetTitle }) => {
@@ -55,11 +41,10 @@ const Search = ({ search, onSetTitle }) => {
   return (
     <ul>
       {posts.edges.map(item => {
-        const { id, title, slug, content } = item.node;
+        const { id, title, slug } = item.node;
         return (
           <li key={id}>
             <Link to={`/posts/${slug}`}>{title}</Link>
-            {parse(content)}
           </li>
         );
       })}

@@ -8,7 +8,6 @@ const getPostsQuery = gql`
                     id
                     title
                     slug
-                    content
                 }
             }
         }
