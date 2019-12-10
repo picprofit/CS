@@ -45,7 +45,11 @@ function Navigator(props) {
           </ListItemText>
         </ListItem>
 
-        <ListItem className={classes.categoryHeader}>
+        <ListItem
+          component={Link}
+          to="/categories"
+          className={classes.categoryHeader}
+        >
           <ListItemText
             classes={{
               primary: classes.categoryHeaderPrimary

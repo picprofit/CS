@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -12,10 +13,11 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
 
-import { setFilter } from '../../actions';
+import { setFilter, setSearch } from '../../../actions';
 
-const Search = ({ classes, filter, onSetFilter }) => {
+const SearchBar = ({ classes, filter, onSetFilter, onSetSearch }) => {
   const ESC_KEY_CODE = 27;
+  const history = useHistory();
   return (
     <AppBar
       className={classes.searchBar}
@@ -26,6 +28,8 @@ const Search = ({ classes, filter, onSetFilter }) => {
       <form
         onSubmit={e => {
           e.preventDefault();
+          onSetSearch(filter);
+          history.push("/search");
         }}
       >
         <Toolbar>
@@ -84,7 +88,8 @@ const mapStateToProps = store => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onSetFilter: filter => dispatch(setFilter(filter))
+  onSetFilter: filter => dispatch(setFilter(filter)),
+  onSetSearch: search => dispatch(setSearch(search))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

@@ -6,15 +6,19 @@ import { CssBaseline, Hidden } from '@material-ui/core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
-import Navigator from './Navigator';
-import Content from './Content';
-import Header from './Header';
-import Posts from './Posts';
-import Post from './Post';
-import NotFound from './NotFound';
-import Category from './Category';
-import Search from './Search';
-import Copyright from './Copyright';
+
+import Navigator from './layout/Navigator';
+import Content from './layout/Content';
+import Header from './layout/Header';
+import Copyright from './layout/Copyright';
+
+import Posts from './pages/Posts';
+import Post from './pages/Post';
+import NotFound from './pages/NotFound';
+import Category from './pages/Category';
+import Categories from './pages/Categories';
+import Search from './pages/Search';
+
 import theme from '../theme';
 import { apiUrl } from '../config';
 import { setTitle } from '../actions';
@@ -84,8 +88,10 @@ const App = ({ classes }) => {
                 <Switch>
                   <Route exact path="/" component={Posts} />
                   <Route path="/posts/:slug" component={Post} />
+                  <Route path="/posts" component={Posts} />
                   <Route path="/category/:slug" component={Category} />
-                  <Route path="/search/:slug" component={Search} />
+                  <Route path="/categories" component={Categories} />
+                  <Route path="/search" component={Search} />
                   <Route component={NotFound} />
                 </Switch>
               </Content>

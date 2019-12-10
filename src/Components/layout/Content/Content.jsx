@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
-import Search from '../Search';
+import SearchBar from '../../layout/SearchBar';
 
 const styles = theme => ({
   paper: {
@@ -32,7 +32,7 @@ const Content = (props) => {
 
   return (
     <Paper className={classes.paper}>
-      <Search classes={classes} />
+      <SearchBar classes={classes} />
       <div className={classes.contentWrapper}>
         {props.children}
       </div>

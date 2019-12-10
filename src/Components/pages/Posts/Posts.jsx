@@ -4,9 +4,9 @@ import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Divider } from '@material-ui/core';
 
-import { setTitle } from '../../actions';
+import Loader from '../../layout/Loader';
+import { setTitle } from '../../../actions';
 import getPostsQuery from './getPostsQuery';
-import Loader from '../Loader';
 
 const Posts = ({ data, onSetTitle, filter }) => {
   onSetTitle("Posts");

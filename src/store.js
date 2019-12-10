@@ -4,7 +4,8 @@ import rootReducer  from './reducers';
 
 const initialState = {
   title: 'Home',
-  filter: ''
+  filter: '',
+  search: '',
 };
 
 const composeEnhancers =

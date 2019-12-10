@@ -2,23 +2,22 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, ButtonToolbar } from 'react-bootstrap';
-import { setTitle } from '../../actions';
+import { setTitle } from '../../../actions';
 import getPostsByCategoryQuery from './getPostsByCategoryQuery';
 
-import Loader from '../Loader';
+import Loader from '../../layout/Loader';
 
-const Category = ({ data, onSetTitle: setTitle }) => {
+const Category = ({ data, onSetTitle }) => {
   const { loading, error, posts } = data;
   if (loading) {
-    setTitle('Category is loading..');
+    onSetTitle('Category is loading..');
     return <Loader />;
   }
   if (error) {
-    setTitle('Failed to load category');
+    onSetTitle('Failed to load category');
     return <>Oops, smth went wrong!</>;
   }
-  setTitle('Category');
+  onSetTitle('Category');
   return (
     <ul>
       {posts.edges.map(item => {

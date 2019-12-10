@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
 
-import Loader from '../Loader';
-import { setTitle } from '../../actions';
+import Loader from '../../layout/Loader';
+import { setTitle } from '../../../actions';
 import getPostBySlugQuery from './getPostBySlugQuery';
 
 const ButtonBack = () => {
