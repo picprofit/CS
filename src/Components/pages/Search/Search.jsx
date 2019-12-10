@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { graphql, useQuery } from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 
@@ -23,6 +23,7 @@ import Loader from '../../layout/Loader';
 
 const Search = ({ search }) => {
   const { loading, error, data } = useQuery(getPostsQuery, {
+    skip: search.length === 0,
     variables: {
       search
     }
