@@ -11,9 +11,9 @@ import getPostBySlugQuery from './getPostBySlugQuery';
 
 const ButtonBack = () => {
   return (
-    <Link to="/">
-      <Button variant="outline-primary">&larr; Back to posts</Button>
-    </Link>
+    <Button variant="outlined" component={Link} to="/">
+      &larr; Back to posts
+    </Button>
   );
 };
 
