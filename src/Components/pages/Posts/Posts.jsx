@@ -23,7 +23,7 @@ const Posts = ({ onSetTitle, filter }) => {
   }
 
   const { posts } = data;
-
+  let nothingFoundOnFilter = 'Sorry, nothing found on filter';
   return (
     <List component="nav" aria-label="contacts">
       {posts.edges.map(item => {
@@ -31,6 +31,7 @@ const Posts = ({ onSetTitle, filter }) => {
         if (!title.includes(filter)) {
           return null;
         }
+        nothingFoundOnFilter = '';
         return (
           <ListItem component={Link} to={`/posts/${slug}`} button key={id}>
             {title}
@@ -38,6 +39,7 @@ const Posts = ({ onSetTitle, filter }) => {
           </ListItem>
         );
       })}
+      {nothingFoundOnFilter}
     </List>
   );
 };
