@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
-import getCategoriesQuery from './getCategoriesQuery';
 import Loader from '../../layout/Loader';
+import getCategoriesQuery from './getCategoriesQuery';
 
 const Categories = () => {
   const { loading, error, data } = useQuery(getCategoriesQuery);
@@ -22,15 +22,11 @@ const Categories = () => {
         const { id, name, slug } = item.node;
         return (
           <React.Fragment key={id}>
-            <ListItem
-              button
-              component={Link}
-              to={`/category/${slug}`}
-            >
-              <ListItemIcon><ArrowForwardIosIcon /></ListItemIcon>
-              <ListItemText>
-                {name}
-              </ListItemText>
+            <ListItem button component={Link} to={`/category/${slug}`}>
+              <ListItemIcon>
+                <ArrowForwardIosIcon />
+              </ListItemIcon>
+              <ListItemText>{name}</ListItemText>
             </ListItem>
           </React.Fragment>
         );

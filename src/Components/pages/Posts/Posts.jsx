@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { List, ListItem, Divider } from '@material-ui/core';
 import { useQuery } from 'react-apollo';
 
 import Loader from '../../layout/Loader';
+import PostsLayout from '../../layout/PostsLayout';
 import { setTitle } from '../../../actions';
 
 import getPostsQuery from './getPostsQuery';
 
-const Posts = ({ onSetTitle, filter }) => {
+const Posts = ({ onSetTitle }) => {
   onSetTitle('Posts');
 
   const { loading, error, data } = useQuery(getPostsQuery);
@@ -21,37 +20,12 @@ const Posts = ({ onSetTitle, filter }) => {
   if (error) {
     return <>Oops, smth went wrong!</>;
   }
-
   const { posts } = data;
-  let nothingFoundOnFilter = 'Sorry, nothing found on filter';
-  return (
-    <List component="nav" aria-label="contacts">
-      {posts.edges.map(item => {
-        const { id, title, slug } = item.node;
-        if (!title.includes(filter)) {
-          return null;
-        }
-        nothingFoundOnFilter = '';
-        return (
-          <ListItem component={Link} to={`/posts/${slug}`} button key={id}>
-            {title}
-            <Divider />
-          </ListItem>
-        );
-      })}
-      {nothingFoundOnFilter}
-    </List>
-  );
-};
 
-const mapStateToProps = state => {
-  return {
-    filter: state.filter
-  };
+  return <PostsLayout posts={posts}/>;
 };
-
 const mapDispatchToProps = dispatch => ({
   onSetTitle: title => dispatch(setTitle(title))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(null, mapDispatchToProps)(Posts);
