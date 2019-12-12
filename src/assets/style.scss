@@ -1,7 +1,7 @@
 body {
   font-family: Roboto, sans-serif;
 }
-
+$headings-color: #003343;
 
 .boxzilla {
   -webkit-box-shadow: -5px -5px 10px -4px rgba(0,0,0,0.75);
@@ -10,13 +10,13 @@ body {
   z-index: 9999999;
 }
 .boxzilla h5 {
-  color: #003343;
+  color: $headings-color;
   font-size: 20px;
 }
 .boxzilla h6 {
   font-size: 18px;
   font-weight: 500;
-  color: #003343;
+  color: $headings-color;
 }
 .cover-wrapper {
   display: block;
@@ -29,4 +29,16 @@ body {
   margin-bottom: 0;
   width: 130px;
   height: auto;
+}
+/*progress bar*/
+#nprogress {
+  z-index: 9999;
+  position: fixed;
+  .bar {
+    background: #fff;
+  }
+  .spinner-icon {
+    border-top-color: #fff;
+    border-left-color: #fff;
+  }
 }

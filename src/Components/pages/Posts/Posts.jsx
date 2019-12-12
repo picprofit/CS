@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useQuery } from 'react-apollo';
+import NProgress from 'nprogress';
 
 import Loader from '../../layout/Loader';
 import PostsLayout from '../../layout/PostsLayout';
@@ -10,6 +11,7 @@ import getPostsQuery from './getPostsQuery';
 
 const Posts = ({ onSetTitle }) => {
   onSetTitle('Posts');
+  NProgress.start();
 
   const { loading, error, data } = useQuery(getPostsQuery);
 
@@ -17,6 +19,7 @@ const Posts = ({ onSetTitle }) => {
     return <Loader />;
   }
 
+  NProgress.done();
   if (error) {
     return <>Oops, smth went wrong!</>;
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import NProgress from 'nprogress';
 
 import PostsLayout from '../../layout/PostsLayout';
 import Loader from '../../layout/Loader';
@@ -10,6 +10,7 @@ import { setTitle } from '../../../actions';
 import getPostsByCategoryQuery from './getPostsByCategoryQuery';
 
 const Category = ({ data, onSetTitle }) => {
+  NProgress.start();
   const { loading, error, posts } = data;
   if (loading) {
     onSetTitle('Category is loading..');
@@ -19,6 +20,7 @@ const Category = ({ data, onSetTitle }) => {
     onSetTitle('Failed to load category');
     return <>Oops, smth went wrong!</>;
   }
+  NProgress.done();
   onSetTitle('Category');
   return <PostsLayout posts={posts} />;
 };

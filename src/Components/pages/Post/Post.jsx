@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
+import NProgress from 'nprogress';
 
 import Loader from '../../layout/Loader';
 import { setTitle } from '../../../actions';
@@ -18,17 +19,22 @@ const ButtonBack = () => {
 };
 
 const Post = ({ data, onSetTitle }) => {
+
+  NProgress.start();
   const { loading, error, post } = data;
+
   if (loading) {
-    setTitle('Post is loading..');
+    onSetTitle('Post is loading..');
     return <Loader />;
   }
+
   if (error) {
-    setTitle('Failed to load post');
+    onSetTitle('Failed to load post');
     return <>Oops, smth went wrong!</>;
   }
 
-  // console.log(data);
+  NProgress.done();
+
   const { content, title } = post;
   onSetTitle(title);
   return (
