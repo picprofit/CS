@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Divider } from '@material-ui/core';
 
-const PostsLayout = ({ posts, filter }) => {
+const PostsLayout = ({ posts, skipFilter = false, filter }) => {
   let nothingFoundOnFilter = 'Sorry, nothing found on filter';
   return (
     <List component="nav" aria-label="contacts">
       {posts.edges.map(item => {
         const { id, title, slug } = item.node;
-        if (!title.includes(filter)) {
+        if (!title.includes(filter) && !skipFilter) {
           return null;
         }
         nothingFoundOnFilter = '';

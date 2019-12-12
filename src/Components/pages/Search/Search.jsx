@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { useQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
 
-import { setTitle } from '../../../actions';
-
-import getPostsQuery from './getPostsQuery';
-
 import Loader from '../../layout/Loader';
+import PostsLayout from '../../layout/PostsLayout';
+
+import { setTitle } from '../../../actions';
+import getPostsQuery from './getPostsQuery';
 
 const Search = ({ search, onSetTitle }) => {
   const { loading, error, data } = useQuery(getPostsQuery, {
@@ -38,18 +38,7 @@ const Search = ({ search, onSetTitle }) => {
     return <>Sorry, nothing found :( </>;
   }
   onSetTitle(`Search results of '${search}'`);
-  return (
-    <ul>
-      {posts.edges.map(item => {
-        const { id, title, slug } = item.node;
-        return (
-          <li key={id}>
-            <Link to={`/posts/${slug}`}>{title}</Link>
-          </li>
-        );
-      })}
-    </ul>
-  );
+  return <PostsLayout posts={posts} skipFilter/>;
 };
 
 const mapStateToProps = store => {
