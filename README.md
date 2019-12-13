@@ -3,3 +3,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## WordPress/React personal stylesheet collection
 
 Project uses WordPress as a Backend (via WP built in rest API and GraphQL) and React as a frontend.
+
+I also used [PaperBase](https://themes.material-ui.com/themes/paperbase/) theme
