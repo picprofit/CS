@@ -6,6 +6,7 @@ import { CssBaseline, Hidden } from '@material-ui/core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
+import Helmet from 'react-helmet';
 
 import Navigator from './layout/Navigator';
 import Content from './layout/Content';
@@ -66,6 +67,9 @@ const App = ({ classes }) => {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
+        <Helmet>
+          <title>Home</title>
+        </Helmet>
         <div className={classes.root}>
           <CssBaseline />
           <nav className={classes.drawer}>

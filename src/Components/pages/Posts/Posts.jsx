@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useQuery } from 'react-apollo';
+import Helmet from 'react-helmet';
 import NProgress from 'nprogress';
 
 import Loader from '../../layout/Loader';
 import PostsLayout from '../../layout/PostsLayout';
-import { setTitle } from '../../../actions';
 
+import { setTitle } from '../../../actions';
 import getPostsQuery from './getPostsQuery';
 
 const Posts = ({ onSetTitle }) => {
@@ -25,7 +26,14 @@ const Posts = ({ onSetTitle }) => {
   }
   const { posts } = data;
 
-  return <PostsLayout posts={posts}/>;
+  return (
+    <>
+      <Helmet>
+        <title>Posts</title>
+      </Helmet>
+      <PostsLayout posts={posts} />
+    </>
+  );
 };
 const mapDispatchToProps = dispatch => ({
   onSetTitle: title => dispatch(setTitle(title))

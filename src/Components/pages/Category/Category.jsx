@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
 import NProgress from 'nprogress';
+import Helmet from 'react-helmet';
 
 import PostsLayout from '../../layout/PostsLayout';
 import Loader from '../../layout/Loader';
@@ -22,7 +23,14 @@ const Category = ({ data, onSetTitle }) => {
   }
   NProgress.done();
   onSetTitle('Category');
-  return <PostsLayout posts={posts} />;
+  return (
+    <>
+      <Helmet>
+        <title>Category</title>
+      </Helmet>
+      <PostsLayout posts={posts} />
+    </>
+  );
 };
 
 const mapDispatchToProps = dispatch => ({

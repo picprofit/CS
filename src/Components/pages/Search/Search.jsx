@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useQuery } from 'react-apollo';
-import { Link } from 'react-router-dom';
+import Helmet from 'react-helmet';
 
 import Loader from '../../layout/Loader';
 import PostsLayout from '../../layout/PostsLayout';
@@ -38,7 +38,14 @@ const Search = ({ search, onSetTitle }) => {
     return <>Sorry, nothing found :( </>;
   }
   onSetTitle(`Search results of '${search}'`);
-  return <PostsLayout posts={posts} skipFilter/>;
+  return (
+    <>
+      <Helmet>
+        <title>Search</title>
+      </Helmet>
+      <PostsLayout posts={posts} skipFilter />
+    </>
+  );
 };
 
 const mapStateToProps = store => {

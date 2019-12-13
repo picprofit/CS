@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
 import NProgress from 'nprogress';
+import Helmet from 'react-helmet';
 
 import Loader from '../../layout/Loader';
 import { setTitle } from '../../../actions';
@@ -39,6 +40,9 @@ const Post = ({ data, onSetTitle }) => {
   onSetTitle(title);
   return (
     <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <ButtonBack />
       <article>{parse(content)}</article>
       <ButtonBack />
