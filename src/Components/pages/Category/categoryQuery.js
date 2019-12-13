@@ -1,6 +1,18 @@
 import gql from 'graphql-tag';
 
-const getPostsByCategoryQuery = gql`
+const getAllCategoriesQuery = `
+  categories {
+    edges {
+      node {
+        id
+        name
+        slug
+      }
+    }
+  }
+`;
+
+const categoryQuery = gql`
     query getPostsByCategoryQuery($slug: String) {
         posts(
             where: { categoryName: $slug, orderby: { field: DATE, order: ASC } }
@@ -20,7 +32,8 @@ const getPostsByCategoryQuery = gql`
                 hasPreviousPage
             }
         }
+        ${getAllCategoriesQuery}
     }
 `;
 
-export default getPostsByCategoryQuery;
+export default categoryQuery;

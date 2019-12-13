@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
+import { graphql, useQuery } from 'react-apollo';
 import { connect } from 'react-redux';
 import NProgress from 'nprogress';
 import Helmet from 'react-helmet';
@@ -8,11 +8,14 @@ import PostsLayout from '../../layout/PostsLayout';
 import Loader from '../../layout/Loader';
 
 import { setTitle } from '../../../actions';
-import getPostsByCategoryQuery from './getPostsByCategoryQuery';
+import categoryQuery from './categoryQuery';
 
-const Category = ({ data, onSetTitle }) => {
+const Category = props => {
   NProgress.start();
-  const { loading, error, posts } = data;
+  const { onSetTitle, data, match } = props;
+  const { loading, error } = data;
+  const { slug } = match.params;
+
   if (loading) {
     onSetTitle('Category is loading..');
     return <Loader />;
@@ -22,11 +25,22 @@ const Category = ({ data, onSetTitle }) => {
     return <>Oops, smth went wrong!</>;
   }
   NProgress.done();
-  onSetTitle('Category');
+
+  const { posts, categories } = data;
+
+  // get category name
+  const category = categories.edges.filter(item => {
+    const { slug: categorySlug } = item.node;
+    return slug === categorySlug;
+  });
+  const pageTitle = category[0].node.name || 'Category';
+
+  // const pageTitle = 'Category';
+  onSetTitle(pageTitle);
   return (
     <>
       <Helmet>
-        <title>Category</title>
+        <title>{pageTitle}</title>
       </Helmet>
       <PostsLayout posts={posts} />
     </>
@@ -41,7 +55,7 @@ export default connect(
   null,
   mapDispatchToProps
 )(
-  graphql(getPostsByCategoryQuery, {
+  graphql(categoryQuery, {
     options: props => {
       const { slug } = props.match.params;
       return {
