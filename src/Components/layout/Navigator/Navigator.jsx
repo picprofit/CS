@@ -16,8 +16,7 @@ import CodeIcon from '@material-ui/icons/Code';
 import Categories from '../Categories';
 import styles from './styles';
 
-function Navigator(props) {
-  const { classes, ...other } = props;
+const Navigator = ({ classes, ...other }) => {
 
   return (
     <Drawer variant="permanent" {...other}>

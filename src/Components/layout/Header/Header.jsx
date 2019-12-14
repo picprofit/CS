@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import HelpIcon from '@material-ui/icons/Help';
 import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
@@ -35,7 +37,7 @@ const styles = theme => ({
   }
 });
 
-const Header = ({ classes, title }) => {
+const Header = ({ classes, onDrawerToggle, title }) => {
   return (
     <>
       <AppBar
@@ -60,6 +62,18 @@ const Header = ({ classes, title }) => {
                   </IconButton>
                 </Tooltip>
               </Grid>
+              <Hidden smUp>
+                <Grid item>
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={onDrawerToggle}
+                    className={classes.menuButton}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                </Grid>
+              </Hidden>
             </Grid>
           </Toolbar>
         </Box>
