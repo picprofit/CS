@@ -79,6 +79,7 @@ const App = ({ classes }) => {
                 variant="temporary"
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
+                onDrawerToggle={handleDrawerToggle}
               />
             </Hidden>
             <Hidden xsDown implementation="css">

@@ -1,3 +1,6 @@
+
+const lightColor = 'rgba(255, 255, 255, 0.7)';
+
 const styles = theme => ({
   categoryHeader: {
     paddingTop: theme.spacing(2),
@@ -9,7 +12,7 @@ const styles = theme => ({
   item: {
     paddingTop: 1,
     paddingBottom: 1,
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: lightColor,
     '&:hover,&:focus': {
       backgroundColor: 'rgba(255, 255, 255, 0.08)'
     }
@@ -36,6 +39,9 @@ const styles = theme => ({
   },
   divider: {
     marginTop: theme.spacing(2)
+  },
+  button: {
+    borderColor: lightColor
   }
 });
 
