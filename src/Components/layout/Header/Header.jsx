@@ -5,15 +5,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import HelpIcon from '@material-ui/icons/Help';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import Toolbar from '@material-ui/core/Toolbar';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
+import HeaderIcon from './HeaderIcon';
 import styles from './styles';
 
 const Header = ({ classes, onDrawerToggle, mobileOpen, title }) => {
@@ -35,11 +34,7 @@ const Header = ({ classes, onDrawerToggle, mobileOpen, title }) => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Tooltip title="Help">
-                  <IconButton color="inherit">
-                    <HelpIcon />
-                  </IconButton>
-                </Tooltip>
+                <HeaderIcon />
               </Grid>
               <Hidden smUp>
                 <Grid item>
