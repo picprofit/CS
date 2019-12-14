@@ -8,6 +8,7 @@ import Hidden from '@material-ui/core/Hidden';
 import HelpIcon from '@material-ui/icons/Help';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@material-ui/icons/Close';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
@@ -15,7 +16,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import styles from './styles';
 
-const Header = ({ classes, onDrawerToggle, title }) => {
+const Header = ({ classes, onDrawerToggle, mobileOpen, title }) => {
   return (
     <>
       <AppBar
@@ -48,7 +49,7 @@ const Header = ({ classes, onDrawerToggle, title }) => {
                     onClick={onDrawerToggle}
                     className={classes.menuButton}
                   >
-                    <MenuIcon />
+                    {mobileOpen ? <CloseIcon /> : <MenuIcon />}
                   </IconButton>
                 </Grid>
               </Hidden>
@@ -68,7 +69,7 @@ Header.propTypes = {
 const mapStateToProps = store => {
   return {
     title: store.title
-  }
+  };
 };
 
 export default connect(mapStateToProps, null)(withStyles(styles)(Header));

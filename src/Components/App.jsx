@@ -20,14 +20,13 @@ import Category from './pages/Category';
 import Categories from './pages/Categories';
 import Search from './pages/Search';
 
-import styles from './styles';
+import styles, { drawerWidth } from './styles';
 import { apiUrl } from '../config';
 import { setTitle } from '../actions';
 
 const client = new ApolloClient({
   uri: apiUrl
 });
-
 
 const App = ({ classes }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -59,7 +58,7 @@ const App = ({ classes }) => {
             </Hidden>
           </nav>
           <div className={classes.app}>
-            <Header onDrawerToggle={handleDrawerToggle} />
+            <Header onDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
             <main className={classes.main}>
               <Content>
                 <Switch>

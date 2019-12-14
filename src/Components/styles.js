@@ -30,3 +30,4 @@ const styles = {
 };
 
 export default styles;
+export { drawerWidth };
