@@ -15,8 +15,12 @@ const HeaderIcon = () => {
       title={title}
       onClick={() => {
         setCount(count + 1);
-        if (count > 10) {
-          setTitle(`Hello! You clicked ${count} times. Why?`);
+        if (count > 10 && count < 100) {
+          setTitle(`You clicked ${count} times. Why?`);
+        } else if (count > 100 && count < 1000) {
+          setTitle(`You clicked ${count} times. Impressive!`);
+        } else if (count > 1000) {
+          setTitle(`You clicked ${count} times. Better do some useful :)`);
         }
       }}
     >
