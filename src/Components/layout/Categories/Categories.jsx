@@ -1,12 +1,11 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
-import clsx from 'clsx';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import getCategoriesQuery from './getCategoriesQuery';
-import Loader from '../../layout/Loader';
+import Loader from '../Loader';
 
 const Categories = ({ data, classes }) => {
   const { loading, error, categories } = data;
@@ -16,7 +15,6 @@ const Categories = ({ data, classes }) => {
   if (error) {
     return <>Oops, smth went wrong!</>;
   }
-  // className={clsx(classes.item, active && classes.itemActiveItem)}
   return (
     <>
       {categories.edges.map(item => {

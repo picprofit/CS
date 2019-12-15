@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Loader = ({ text = 'Loading...' }) => {
+const Loader = ({ alt = false }) => {
   return (
-    <div className="lds-ellipsis">
-      <div></div>
-      <div></div>
+    <div className={ alt ? 'loader_ripple' : 'loader_ripple-alt'}>
       <div></div>
       <div></div>
     </div>
