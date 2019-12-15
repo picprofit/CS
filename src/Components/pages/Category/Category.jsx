@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, useQuery } from 'react-apollo';
+import { graphql } from 'react-apollo';
 import { connect } from 'react-redux';
 import NProgress from 'nprogress';
 import Helmet from 'react-helmet';
