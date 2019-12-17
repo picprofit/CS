@@ -16,7 +16,8 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
         nothingFoundOnFilter = '';
         return (
           <ListItem component={Link} to={`/posts/${slug}`} button key={id}>
-            <ArrowRightIcon />{title}
+            <ArrowRightIcon />
+            {title}
             <Divider />
           </ListItem>
         );

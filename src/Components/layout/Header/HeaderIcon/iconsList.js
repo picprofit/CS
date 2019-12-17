@@ -50,8 +50,6 @@ import SportsBaseballIcon from '@material-ui/icons/SportsBaseball';
 import SportsKabaddiIcon from '@material-ui/icons/SportsKabaddi';
 import WatchIcon from '@material-ui/icons/Watch';
 
-
-
 export default [
   HelpIcon,
   AcUnitIcon,
@@ -103,5 +101,5 @@ export default [
   RedditIcon,
   SportsBaseballIcon,
   SportsKabaddiIcon,
-  WatchIcon,
+  WatchIcon
 ];

@@ -27,7 +27,9 @@ const Categories = ({ data, classes }) => {
               to={`/category/${slug}`}
               className={classes.item}
             >
-              <ListItemIcon className={classes.itemIcon}><ArrowForwardIosIcon /></ListItemIcon>
+              <ListItemIcon className={classes.itemIcon}>
+                <ArrowForwardIosIcon />
+              </ListItemIcon>
               <ListItemText
                 classes={{
                   primary: classes.itemPrimary

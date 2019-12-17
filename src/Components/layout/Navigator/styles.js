@@ -1,4 +1,3 @@
-
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
 const styles = theme => ({

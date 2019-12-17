@@ -21,7 +21,6 @@ import Categories from '../Categories';
 import styles from './styles';
 
 const Navigator = ({ classes, onDrawerToggle, ...other }) => {
-
   return (
     <Drawer variant="permanent" {...other}>
       <List disablePadding>
@@ -78,7 +77,7 @@ const Navigator = ({ classes, onDrawerToggle, ...other }) => {
       </List>
     </Drawer>
   );
-}
+};
 
 Navigator.propTypes = {
   classes: PropTypes.object.isRequired

@@ -29,7 +29,7 @@ const SearchBar = ({ classes, filter, onSetFilter, onSetSearch }) => {
         onSubmit={e => {
           e.preventDefault();
           onSetSearch(filter);
-          history.push("/search");
+          history.push('/search');
         }}
       >
         <Toolbar>
@@ -50,7 +50,7 @@ const SearchBar = ({ classes, filter, onSetFilter, onSetSearch }) => {
                   onSetFilter(e.target.value);
                 }}
                 onKeyDown={e => {
-                  if(e.keyCode === ESC_KEY_CODE) {
+                  if (e.keyCode === ESC_KEY_CODE) {
                     onSetFilter('');
                   }
                 }}
@@ -66,10 +66,12 @@ const SearchBar = ({ classes, filter, onSetFilter, onSetSearch }) => {
                 Search
               </Button>
               <Tooltip title="Clear">
-                <IconButton onClick={(e) => {
-                  e.preventDefault();
-                  onSetFilter('');
-                }}>
+                <IconButton
+                  onClick={e => {
+                    e.preventDefault();
+                    onSetFilter('');
+                  }}
+                >
                   <RefreshIcon className={classes.block} color="inherit" />
                 </IconButton>
               </Tooltip>
@@ -84,7 +86,7 @@ const SearchBar = ({ classes, filter, onSetFilter, onSetSearch }) => {
 const mapStateToProps = store => {
   return {
     filter: store.filter
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
