@@ -20,7 +20,6 @@ const ButtonBack = () => {
 };
 
 const Post = ({ data, onSetTitle }) => {
-
   NProgress.start();
   const { loading, error, post } = data;
 
@@ -44,7 +43,7 @@ const Post = ({ data, onSetTitle }) => {
         <title>{title}</title>
       </Helmet>
       <ButtonBack />
-      <article>{parse(content)}</article>
+      <article>{parse(content.replace('wp-block-code','html'))}</article>
       <ButtonBack />
     </>
   );

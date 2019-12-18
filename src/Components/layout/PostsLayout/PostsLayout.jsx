@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { List, ListItem, Divider } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import parse from 'html-react-parser';
 
 const PostsLayout = ({ posts, skipFilter = false, filter }) => {
   let nothingFoundOnFilter = 'Sorry, nothing found on filter';
@@ -17,7 +18,8 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
         return (
           <ListItem component={Link} to={`/posts/${slug}`} button key={id}>
             <ArrowRightIcon />
-            {title}
+            {/* parse special symbols but tags */}
+            {parse(title.replace('<', '&lt;').replace('<', '&gt;'))}
             <Divider />
           </ListItem>
         );
