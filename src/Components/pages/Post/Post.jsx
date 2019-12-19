@@ -10,6 +10,7 @@ import Helmet from 'react-helmet';
 import Loader from '../../layout/Loader';
 import { setTitle } from '../../../actions';
 import getPostBySlugQuery from './getPostBySlugQuery';
+import fixSpecialCharacters from '../../../helpers/fixSpecialCharacters';
 
 const ButtonBack = () => {
   return (
@@ -36,14 +37,15 @@ const Post = ({ data, onSetTitle }) => {
   NProgress.done();
 
   const { content, title } = post;
-  onSetTitle(title);
+  const fixedTitle = parse(fixSpecialCharacters(title));
+  onSetTitle(fixedTitle);
   return (
     <>
       <Helmet>
-        <title>{title}</title>
+        <title>{fixedTitle}</title>
       </Helmet>
       <ButtonBack />
-      <article>{parse(content.replace('wp-block-code','html'))}</article>
+      <article>{parse(content.replace('wp-block-code', 'html'))}</article>
       <ButtonBack />
     </>
   );

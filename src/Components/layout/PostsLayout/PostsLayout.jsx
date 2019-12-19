@@ -5,6 +5,8 @@ import { List, ListItem, Divider } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import parse from 'html-react-parser';
 
+import fixSpecialCharacters from '../../../helpers/fixSpecialCharacters';
+
 const PostsLayout = ({ posts, skipFilter = false, filter }) => {
   let nothingFoundOnFilter = 'Sorry, nothing found on filter';
   return (
@@ -19,7 +21,7 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
           <ListItem component={Link} to={`/posts/${slug}`} button key={id}>
             <ArrowRightIcon />
             {/* parse special symbols but tags */}
-            {parse(title.replace('<', '&lt;').replace('<', '&gt;'))}
+            {parse(fixSpecialCharacters(title))}
             <Divider />
           </ListItem>
         );
