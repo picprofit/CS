@@ -25,8 +25,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "start-old": "react-scripts start",
-    "build-old": "react-scripts build",
+    "start-csr": "react-scripts start",
+    "build-ssr": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
