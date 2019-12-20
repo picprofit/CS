@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import { CssBaseline, Hidden } from '@material-ui/core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
 import Helmet from 'react-helmet';
-
-import Navigator from './layout/Navigator';
-import Content from './layout/Content';
-import Header from './layout/Header';
-import Copyright from './layout/Copyright';
 
 import Posts from './pages/Posts';
 import Post from './pages/Post';
@@ -20,7 +14,7 @@ import Category from './pages/Category';
 import Categories from './pages/Categories';
 import Search from './pages/Search';
 
-import styles, { drawerWidth } from './styles';
+import styles  from './styles';
 import { apiUrl } from '../config';
 import { setTitle } from '../actions';
 import Layout from './layout/Layout';
