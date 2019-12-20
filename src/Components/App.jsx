@@ -23,60 +23,30 @@ import Search from './pages/Search';
 import styles, { drawerWidth } from './styles';
 import { apiUrl } from '../config';
 import { setTitle } from '../actions';
+import Layout from './layout/Layout';
 
 const client = new ApolloClient({
   uri: apiUrl
 });
 
 const App = ({ classes }) => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Helmet>
           <title>Home</title>
         </Helmet>
-        <div className={classes.root}>
-          <CssBaseline />
-          <nav className={classes.drawer}>
-            <Hidden smUp implementation="js">
-              <Navigator
-                PaperProps={{ style: { width: drawerWidth } }}
-                variant="temporary"
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
-                onDrawerToggle={handleDrawerToggle}
-              />
-            </Hidden>
-            <Hidden xsDown implementation="css">
-              <Navigator PaperProps={{ style: { width: drawerWidth } }} />
-            </Hidden>
-          </nav>
-          <div className={classes.app}>
-            <Header onDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
-            <main className={classes.main}>
-              <Content>
-                <Switch>
-                  <Route exact path="/" component={Posts} />
-                  <Route path="/posts/:slug" component={Post} />
-                  <Route path="/posts" component={Posts} />
-                  <Route path="/category/:slug" component={Category} />
-                  <Route path="/categories" component={Categories} />
-                  <Route path="/search" component={Search} />
-                  <Route component={NotFound} />
-                </Switch>
-              </Content>
-            </main>
-            <footer className={classes.footer}>
-              <Copyright />
-            </footer>
-          </div>
-        </div>
+        <Layout classes={classes}>
+          <Switch>
+            <Route exact path="/" component={Posts} />
+            <Route path="/posts/:slug" component={Post} />
+            <Route path="/posts" component={Posts} />
+            <Route path="/category/:slug" component={Category} />
+            <Route path="/categories" component={Categories} />
+            <Route path="/search" component={Search} />
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
       </BrowserRouter>
     </ApolloProvider>
   );
