@@ -5,12 +5,6 @@ import Navigator from './Navigator/Navigator';
 import { drawerWidth } from '../styles';
 import Header from './Header/Header';
 import Content from './Content/Content';
-import Posts from '../pages/Posts/Posts';
-import Post from '../pages/Post/Post';
-import Category from '../pages/Category/Category';
-import Categories from '../pages/Categories/Categories';
-import Search from '../pages/Search/Search';
-import NotFound from '../pages/NotFound/NotFound';
 import Copyright from './Copyright';
 
 const Layout = ({ classes, children }) => {
