@@ -8,7 +8,7 @@ import store from '../src-ssr/store';
 import theme from '../src-ssr/theme';
 import '../src-ssr/assets/style.scss';
 
-class MyApp extends App {
+class CSApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
@@ -21,4 +21,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default CSApp;
