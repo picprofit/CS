@@ -1,24 +1,45 @@
 import React from 'react';
 import App from 'next/app';
-import { ThemeProvider } from '@material-ui/core/styles';
-import { Provider } from 'react-redux';
+import { ThemeProvider, withStyles } from '@material-ui/core/styles';
 import 'nprogress/nprogress.css';
+import { compose } from 'redux'
+// import { useDispatch } from 'react-redux'
 
-import store from '../src-ssr/store';
+import withRedux from '../src-ssr/lib/redux';
+// import withApollo from '../src-ssr/lib/apollo'
+
+// import store from '../src-ssr/store';
 import theme from '../src-ssr/theme';
 import '../src-ssr/assets/style.scss';
+
+// import styles from '../src-ssr/Components/styles';
+// import apiUrl from '../src-ssr/config';
+// import { setTitle } from '../src-ssr/actions';
+import Layout from '../src-ssr/Components/layout/Layout';
+
+// const client = new ApolloClient({
+//   uri: apiUrl
+// });
 
 class CSApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <Provider store={store}>
+      <Layout>
         <ThemeProvider theme={theme}>
           <Component {...pageProps} />
         </ThemeProvider>
-      </Provider>
+      </Layout>
     );
   }
 }
 
-export default CSApp;
+CSApp.getInitialProps = ({ reduxStore }) => {
+  const { dispatch } = reduxStore;
+  dispatch({});
+
+  return {};
+};
+
+export default compose(withRedux)(CSApp);
+// export default compose(withApollo, withRedux)(CSApp);
