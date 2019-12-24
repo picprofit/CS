@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
@@ -27,16 +27,18 @@ const Categories = ({ data, classes }) => {
               to={`/category/${slug}`}
               className={classes.item}
             >
-              <ListItemIcon className={classes.itemIcon}>
-                <ArrowForwardIosIcon />
-              </ListItemIcon>
-              <ListItemText
-                classes={{
-                  primary: classes.itemPrimary
-                }}
-              >
-                {name}
-              </ListItemText>
+              <a>
+                <ListItemIcon className={classes.itemIcon}>
+                  <ArrowForwardIosIcon />
+                </ListItemIcon>
+                <ListItemText
+                  classes={{
+                    primary: classes.itemPrimary
+                  }}
+                >
+                  {name}
+                </ListItemText>
+              </a>
             </ListItem>
           </React.Fragment>
         );

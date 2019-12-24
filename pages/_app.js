@@ -6,7 +6,7 @@ import { compose } from 'redux';
 // import { useDispatch } from 'react-redux'
 
 import withRedux from '../src-ssr/lib/redux';
-// import withApollo from '../src-ssr/lib/apollo'
+import withApollo from '../src-ssr/lib/apollo'
 
 // import store from '../src-ssr/store';
 import theme from '../src-ssr/theme';
@@ -33,5 +33,5 @@ class CSApp extends App {
   }
 }
 
-// export default CSApp;
-export default compose(withApollo, withRedux)(CSApp);
+export default CSApp;
+// export default compose(withApollo, withRedux)(CSApp);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import {
   Divider,
   Drawer,
@@ -43,34 +43,34 @@ const Navigator = ({ classes, onDrawerToggle, ...other }) => {
         </ListItem>
         <ListItem
           button
-          component={Link}
-          to="/"
           className={clsx(classes.item, classes.itemCategory)}
         >
-          <ListItemIcon className={classes.itemIcon}>
-            <CodeIcon />
-          </ListItemIcon>
-          <ListItemText
-            classes={{
-              primary: classes.itemPrimary
-            }}
-          >
-            Personal cheatsheet collection
-          </ListItemText>
+          <a>
+            <ListItemIcon className={classes.itemIcon}>
+              <CodeIcon />
+            </ListItemIcon>
+            <ListItemText
+              classes={{
+                primary: classes.itemPrimary
+              }}
+            >
+              Personal cheatsheet collection
+            </ListItemText>
+          </a>
         </ListItem>
 
         <ListItem
-          component={Link}
-          to="/categories"
           className={classes.categoryHeader}
         >
-          <ListItemText
-            classes={{
-              primary: classes.categoryHeaderPrimary
-            }}
-          >
-            Categories
-          </ListItemText>
+          <a>
+            <ListItemText
+              classes={{
+                primary: classes.categoryHeaderPrimary
+              }}
+            >
+              Categories
+            </ListItemText>
+          </a>
         </ListItem>
         <Categories classes={classes} />
         <Divider className={classes.divider} />
