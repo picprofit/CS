@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { CssBaseline, Hidden } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-import { drawerWidth } from '../styles';
-// import Navigator from './Navigator/Navigator';
-// import Header from './Header/Header';
-// import Content from './Content/Content';
-// import Copyright from './Copyright';
+import styles, { drawerWidth } from '../styles';
+import Navigator from './Navigator';
+import Header from './Header';
+import Content from './Content';
+import Copyright from './Copyright';
 
 const Layout = ({ classes, children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -17,15 +17,7 @@ const Layout = ({ classes, children }) => {
     <>
       <div className={classes.root}>
         <CssBaseline />
-        <>Hello Layout!</>
-        {children}
-      </div>
-    </>
-  );
-};
-/*
-*
-<nav className={classes.drawer}>
+        <nav className={classes.drawer}>
           <Hidden smUp implementation="js">
             <Navigator
               PaperProps={{ style: { width: drawerWidth } }}
@@ -50,6 +42,9 @@ const Layout = ({ classes, children }) => {
             <Copyright />
           </footer>
         </div>
-* */
+      </div>
+    </>
+  );
+};
 
-export default Layout;
+export default withStyles(styles)(Layout);

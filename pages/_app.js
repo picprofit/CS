@@ -2,7 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import { ThemeProvider, withStyles } from '@material-ui/core/styles';
 import 'nprogress/nprogress.css';
-import { compose } from 'redux'
+import { compose } from 'redux';
 // import { useDispatch } from 'react-redux'
 
 import withRedux from '../src-ssr/lib/redux';
@@ -12,7 +12,6 @@ import withRedux from '../src-ssr/lib/redux';
 import theme from '../src-ssr/theme';
 import '../src-ssr/assets/style.scss';
 
-// import styles from '../src-ssr/Components/styles';
 // import apiUrl from '../src-ssr/config';
 // import { setTitle } from '../src-ssr/actions';
 import Layout from '../src-ssr/Components/layout/Layout';
@@ -25,21 +24,14 @@ class CSApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <Layout>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <Layout>
           <Component {...pageProps} />
-        </ThemeProvider>
-      </Layout>
+        </Layout>
+      </ThemeProvider>
     );
   }
 }
 
-CSApp.getInitialProps = ({ reduxStore }) => {
-  const { dispatch } = reduxStore;
-  dispatch({});
-
-  return {};
-};
-
-export default compose(withRedux)(CSApp);
-// export default compose(withApollo, withRedux)(CSApp);
+// export default CSApp;
+export default compose(withApollo, withRedux)(CSApp);
