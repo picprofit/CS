@@ -9,6 +9,9 @@ import Loader from '../Loader';
 
 const Categories = ({ data, classes }) => {
   const { loading, error, categories } = data;
+  console.log(loading);
+  console.log(error);
+  console.log(categories);
   if (loading) {
     return <Loader />;
   }

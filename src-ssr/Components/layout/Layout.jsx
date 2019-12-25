@@ -17,24 +17,6 @@ const Layout = ({ classes, children }) => {
     <>
       <div className={classes.root}>
         <CssBaseline />
-        <div className={classes.app}>
-          <Header onDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
-          <main className={classes.main}>
-            <Content>
-              {children}
-            </Content>
-          </main>
-        </div>
-      </div>
-    </>
-  );
-};
-
-/*
-
-    <>
-      <div className={classes.root}>
-        <CssBaseline />
         <nav className={classes.drawer}>
           <Hidden smUp implementation="js">
             <Navigator
@@ -52,9 +34,7 @@ const Layout = ({ classes, children }) => {
         <div className={classes.app}>
           <Header onDrawerToggle={handleDrawerToggle} mobileOpen={mobileOpen} />
           <main className={classes.main}>
-            <Content>
-              {children}
-            </Content>
+            <Content>{children}</Content>
           </main>
           <footer className={classes.footer}>
             <Copyright />
@@ -62,6 +42,7 @@ const Layout = ({ classes, children }) => {
         </div>
       </div>
     </>
-     */
+  );
+};
 
 export default withStyles(styles)(Layout);
