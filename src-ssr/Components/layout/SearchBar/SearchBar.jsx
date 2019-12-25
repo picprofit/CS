@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import Router from 'next/router'
 import {
   AppBar,
   Toolbar,
@@ -17,7 +17,6 @@ import { setFilter, setSearch } from '../../../actions';
 
 const SearchBar = ({ classes, filter, onSetFilter, onSetSearch }) => {
   const ESC_KEY_CODE = 27;
-  const history = useHistory();
   return (
     <AppBar
       className={classes.searchBar}
@@ -29,7 +28,7 @@ const SearchBar = ({ classes, filter, onSetFilter, onSetSearch }) => {
         onSubmit={e => {
           e.preventDefault();
           onSetSearch(filter);
-          history.push('/search');
+          Router.push('/search');
         }}
       >
         <Toolbar>
