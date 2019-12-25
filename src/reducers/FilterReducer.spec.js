@@ -1,4 +1,5 @@
 import expect from 'expect';
+
 import { SET_FILTER } from '../constants';
 import FilterReducer from './FilterReducer';
 
