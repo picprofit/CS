@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { compose } from 'redux';
-import withRedux from '../src-ssr/lib/redux';
-import withApollo from '../src-ssr/lib/apollo';
-import Layout from '../src-ssr/Components/layout/Layout';
+import withRedux from '../src/lib/redux';
+import withApollo from '../src/lib/apollo';
+import Layout from '../src/Components/layout/Layout';
 
 const Index = () => {
   return (
