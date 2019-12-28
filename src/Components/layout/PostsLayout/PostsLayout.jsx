@@ -18,14 +18,14 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
         }
         nothingFoundOnFilter = '';
         return (
-          <ListItem component={Link} to={`/posts/${slug}`} button key={id}>
-            <a>
+          <Link href={`/posts/${slug}`}>
+            <ListItem button key={id}>
               <ArrowRightIcon />
               {/* parse special symbols but tags */}
               {parse(fixSpecialCharacters(title))}
               <Divider />
-            </a>
-          </ListItem>
+            </ListItem>
+          </Link>
         );
       })}
       {nothingFoundOnFilter}
