@@ -1,6 +1,6 @@
 import { SET_TITLE } from '../constants';
 
-const TitleReducer = (state = {}, action) => {
+const TitleReducer = (state = "", action) => {
   switch (action.type) {
     case SET_TITLE:
       return action.title;
