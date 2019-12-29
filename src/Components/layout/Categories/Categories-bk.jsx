@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { graphql } from 'react-apollo';
 import Link from 'next/link';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -7,23 +7,30 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import getCategoriesQuery from './getCategoriesQuery';
 import Loader from '../Loader';
 
-const Categories = ({ classes }) => {
-  const { loading, error, data } = useQuery(getCategoriesQuery);
+const Categories = ({ data, classes }) => {
+  const { loading, error, categories } = data;
+  console.log(loading);
+  console.log(error);
+  console.log(categories);
   if (loading) {
     return <Loader />;
   }
   if (error) {
     return <>Oops, smth went wrong!</>;
   }
-  const { categories } = data;
   return (
     <>
       {categories.edges.map(item => {
         const { id, name, slug } = item.node;
         return (
           <React.Fragment key={id}>
-            <Link href={`/category/${slug}`}>
-              <ListItem button className={classes.item}>
+            <ListItem
+              button
+              component={Link}
+              to={`/category/${slug}`}
+              className={classes.item}
+            >
+              <a>
                 <ListItemIcon className={classes.itemIcon}>
                   <ArrowForwardIosIcon />
                 </ListItemIcon>
@@ -34,8 +41,8 @@ const Categories = ({ classes }) => {
                 >
                   {name}
                 </ListItemText>
-              </ListItem>
-            </Link>
+              </a>
+            </ListItem>
           </React.Fragment>
         );
       })}
@@ -43,4 +50,6 @@ const Categories = ({ classes }) => {
   );
 };
 
-export default Categories;
+export default graphql(getCategoriesQuery, {
+  options: props => {}
+})(Categories);

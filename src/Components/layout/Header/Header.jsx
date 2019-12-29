@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
@@ -15,7 +15,8 @@ import { withStyles } from '@material-ui/core/styles';
 import HeaderIcon from './HeaderIcon';
 import styles from './styles';
 
-const Header = ({ classes, onDrawerToggle, mobileOpen, title }) => {
+const Header = ({ classes, onDrawerToggle, mobileOpen }) => {
+  const title = useSelector(state => state.title);
   return (
     <>
       <AppBar
@@ -61,10 +62,4 @@ Header.propTypes = {
   onDrawerToggle: PropTypes.func.isRequired
 };
 
-const mapStateToProps = store => {
-  return {
-    title: store.title
-  };
-};
-
-export default connect(mapStateToProps, null)(withStyles(styles)(Header));
+export default withStyles(styles)(Header);

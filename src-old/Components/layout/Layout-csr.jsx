@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { CssBaseline, Hidden } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 
-import styles, { drawerWidth } from '../styles';
-import Navigator from './Navigator';
-import Header from './Header';
-import Content from './Content';
-
+import Navigator from './Navigator/Navigator';
+import { drawerWidth } from '../styles';
+import Header from './Header/Header';
+import Content from './Content/Content';
 import Copyright from './Copyright';
 
 const Layout = ({ classes, children }) => {
@@ -49,4 +47,4 @@ const Layout = ({ classes, children }) => {
   );
 };
 
-export default withStyles(styles)(Layout);
+export default Layout;

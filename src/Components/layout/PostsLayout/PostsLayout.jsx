@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { List, ListItem, Divider } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import parse from 'html-react-parser';
@@ -18,12 +18,14 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
         }
         nothingFoundOnFilter = '';
         return (
-          <ListItem component={Link} to={`/posts/${slug}`} button key={id}>
-            <ArrowRightIcon />
-            {/* parse special symbols but tags */}
-            {parse(fixSpecialCharacters(title))}
-            <Divider />
-          </ListItem>
+          <Link href={`/posts/${slug}`}>
+            <ListItem button key={id}>
+              <ArrowRightIcon />
+              {/* parse special symbols but tags */}
+              {parse(fixSpecialCharacters(title))}
+              <Divider />
+            </ListItem>
+          </Link>
         );
       })}
       {nothingFoundOnFilter}
