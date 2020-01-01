@@ -41,27 +41,24 @@ const Navigator = ({ classes, onDrawerToggle, ...other }) => {
             </Grid>
           </Hidden>
         </ListItem>
-        <ListItem
-          button
-          className={clsx(classes.item, classes.itemCategory)}
-        >
-          <a>
-            <ListItemIcon className={classes.itemIcon}>
-              <CodeIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{
-                primary: classes.itemPrimary
-              }}
-            >
-              Personal cheatsheet collection
-            </ListItemText>
-          </a>
+        <ListItem button className={clsx(classes.item, classes.itemCategory)}>
+          <Link href="/">
+            <a>
+              <ListItemIcon className={classes.itemIcon}>
+                <CodeIcon />
+              </ListItemIcon>
+              <ListItemText
+                classes={{
+                  primary: classes.itemPrimary
+                }}
+              >
+                Personal cheatsheet collection
+              </ListItemText>
+            </a>
+          </Link>
         </ListItem>
 
-        <ListItem
-          className={classes.categoryHeader}
-        >
+        <ListItem className={classes.categoryHeader}>
           <a>
             <ListItemText
               classes={{
