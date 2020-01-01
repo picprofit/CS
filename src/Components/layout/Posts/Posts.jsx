@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useQuery } from 'react-apollo';
-import Helmet from 'react-helmet';
+import Head from 'next/head';
 import NProgress from 'nprogress';
 
 import Loader from '../Loader';
@@ -28,9 +28,9 @@ const Posts = ({ onSetTitle }) => {
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Posts</title>
-      </Helmet>
+      </Head>
       <PostsLayout posts={posts} />
     </>
   );
