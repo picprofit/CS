@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { graphql } from 'react-apollo';
-import { Link } from 'react-router-dom';
+import { useQuery } from 'react-apollo';
+import Link from 'next/link';
 import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
 import NProgress from 'nprogress';
-import Helmet from 'react-helmet';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import Loader from '../Loader';
 import { setTitle } from '../../../actions';
@@ -14,15 +15,20 @@ import fixSpecialCharacters from '../../../helpers/fixSpecialCharacters';
 
 const ButtonBack = () => {
   return (
-    <Button variant="outlined" component={Link} to="/">
-      &larr; Back to posts
-    </Button>
+    <Link href={'/'}>
+      <Button variant="outlined">&larr; Back to posts</Button>
+    </Link>
   );
 };
 
-const Post = ({ data, onSetTitle }) => {
-  NProgress.start();
-  const { loading, error, post } = data;
+const Post = ({ id, onSetTitle }) => {
+  // NProgress.start();
+
+  const { loading, error, data } = useQuery(getPostBySlugQuery, {
+    variables: {
+      slug: id
+    }
+  });
 
   if (loading) {
     onSetTitle('Post is loading..');
@@ -34,16 +40,16 @@ const Post = ({ data, onSetTitle }) => {
     return <>Oops, smth went wrong!</>;
   }
 
-  NProgress.done();
+  // NProgress.done();
 
-  const { content, title } = post;
+  const { content, title } = data.post;
   const fixedTitle = parse(fixSpecialCharacters(title));
   onSetTitle(fixedTitle);
   return (
     <>
-      <Helmet>
+      <Head>
         <title>{fixedTitle}</title>
-      </Helmet>
+      </Head>
       <ButtonBack />
       <article>{parse(content.replace('wp-block-code', 'html'))}</article>
       <ButtonBack />
@@ -55,18 +61,4 @@ const mapDispatchToProps = dispatch => ({
   onSetTitle: title => dispatch(setTitle(title))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(
-  graphql(getPostBySlugQuery, {
-    options: props => {
-      const { slug } = props.match.params;
-      return {
-        variables: {
-          slug
-        }
-      };
-    }
-  })(Post)
-);
+export default connect(null, mapDispatchToProps)(Post);

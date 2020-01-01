@@ -7,21 +7,20 @@ import withRedux from '../../src/lib/redux';
 import withApollo from '../../src/lib/apollo';
 
 import Layout from '../../src/Components/layout/Layout';
-import Posts from '../../src/Components/layout/Posts';
+import Post from '../../src/Components/layout/Post';
 
-const Index = () => {
+const PostPage = () => {
   const router = useRouter();
   const { id } = router.query;
   return (
     <Layout>
-      <p>Post {id}!!</p>
-      <Posts />
+      <Post id={id} />
     </Layout>
   );
 };
 
-Index.getInitialProps = ({ reduxStore }) => {
+PostPage.getInitialProps = ({ reduxStore }) => {
   return {};
 };
 
-export default compose(withApollo, withRedux)(Index);
+export default compose(withApollo, withRedux)(PostPage);
