@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Link from 'next/link';
@@ -74,10 +73,6 @@ const Navigator = ({ classes, onDrawerToggle, ...other }) => {
       </List>
     </Drawer>
   );
-};
-
-Navigator.propTypes = {
-  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Navigator);

@@ -18,7 +18,7 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
         }
         nothingFoundOnFilter = '';
         return (
-          <Link href={`/posts/${slug}`} key={id}>
+          <Link href={`/posts/[id]`} as={`/posts/${slug}`} key={id}>
             <a>
               <ListItem button key={id}>
                 <ArrowRightIcon />

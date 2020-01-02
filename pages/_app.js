@@ -11,9 +11,7 @@ class CSApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <ThemeProvider theme={theme}>
           <Component {...pageProps} />
-      </ThemeProvider>
     );
   }
 }

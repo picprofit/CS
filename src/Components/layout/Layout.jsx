@@ -10,6 +10,7 @@ import Content from './Content';
 import Copyright from './Copyright';
 
 const Layout = ({ classes, children }) => {
+
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
