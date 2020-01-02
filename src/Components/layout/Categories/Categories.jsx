@@ -22,7 +22,7 @@ const Categories = ({ classes }) => {
         const { id, name, slug } = item.node;
         return (
           <React.Fragment key={id}>
-            <Link href={`/category/${slug}`}>
+            <Link href={`/categories/[id]`} as={`/categories/${slug}`}>
               <ListItem button className={classes.item}>
                 <ListItemIcon className={classes.itemIcon}>
                   <ArrowForwardIosIcon />
