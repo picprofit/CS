@@ -6,7 +6,6 @@ import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
 import NProgress from 'nprogress';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 import Loader from '../Loader';
 import { setTitle } from '../../../actions';
@@ -22,7 +21,7 @@ const ButtonBack = () => {
 };
 
 const Post = ({ id, onSetTitle }) => {
-  // NProgress.start();
+  NProgress.start();
 
   const { loading, error, data } = useQuery(getPostBySlugQuery, {
     variables: {
@@ -40,7 +39,7 @@ const Post = ({ id, onSetTitle }) => {
     return <>Oops, smth went wrong!</>;
   }
 
-  // NProgress.done();
+  NProgress.done();
 
   const { content, title } = data.post;
   const fixedTitle = parse(fixSpecialCharacters(title));

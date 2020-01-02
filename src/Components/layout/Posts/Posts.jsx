@@ -12,7 +12,7 @@ import getPostsQuery from './getPostsQuery';
 
 const Posts = ({ onSetTitle }) => {
   onSetTitle('Posts');
-  // NProgress.start();
+  NProgress.start();
 
   const { loading, error, data } = useQuery(getPostsQuery);
 
@@ -20,7 +20,7 @@ const Posts = ({ onSetTitle }) => {
     return <Loader />;
   }
 
-  // NProgress.done();
+  NProgress.done();
   if (error) {
     return <>Oops, smth went wrong!</>;
   }
