@@ -41,8 +41,8 @@ const Navigator = ({ classes, onDrawerToggle, ...other }) => {
           </Hidden>
         </ListItem>
         <ListItem button className={clsx(classes.item, classes.itemCategory)}>
-          <Link href="/">
-            <a>
+          <Link href="/" passHref>
+            <div>
               <ListItemIcon className={classes.itemIcon}>
                 <CodeIcon />
               </ListItemIcon>
@@ -53,7 +53,7 @@ const Navigator = ({ classes, onDrawerToggle, ...other }) => {
               >
                 Personal cheatsheet collection
               </ListItemText>
-            </a>
+            </div>
           </Link>
         </ListItem>
 

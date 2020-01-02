@@ -18,15 +18,13 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
         }
         nothingFoundOnFilter = '';
         return (
-          <Link href={`/posts/[id]`} as={`/posts/${slug}`} key={id}>
-            <a>
-              <ListItem button key={id}>
-                <ArrowRightIcon />
-                {/* parse special symbols but tags */}
-                {parse(fixSpecialCharacters(title))}
-                <Divider />
-              </ListItem>
-            </a>
+          <Link href={`/posts/[id]`} as={`/posts/${slug}`} key={id} passHref>
+            <ListItem button key={id}>
+              <ArrowRightIcon />
+              {/* parse special symbols but tags */}
+              {parse(fixSpecialCharacters(title))}
+              <Divider />
+            </ListItem>
           </Link>
         );
       })}

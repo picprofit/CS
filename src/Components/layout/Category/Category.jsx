@@ -1,17 +1,16 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
 import { connect } from 'react-redux';
-import NProgress from 'nprogress';
 import Head from 'next/head';
 
 import PostsLayout from '../PostsLayout';
 import Loader from '../Loader';
+import NextNProgress from '../../NextNProgress';
 
 import { setTitle } from '../../../actions';
 import categoryQuery from './categoryQuery';
 
 const Category = ({ id, onSetTitle }) => {
-  NProgress.start();
 
   const { loading, error, data } = useQuery(categoryQuery, {
     variables: {
@@ -27,7 +26,6 @@ const Category = ({ id, onSetTitle }) => {
     onSetTitle('Failed to load category');
     return <>Oops, smth went wrong!</>;
   }
-  NProgress.done();
 
   const { posts, categories } = data;
 
@@ -45,6 +43,7 @@ const Category = ({ id, onSetTitle }) => {
       <Head>
         <title>{pageTitle}</title>
       </Head>
+      <NextNProgress />
       <PostsLayout posts={posts} />
     </>
   );

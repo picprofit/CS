@@ -4,10 +4,11 @@ import { useQuery } from 'react-apollo';
 import Link from 'next/link';
 import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
-import NProgress from 'nprogress';
 import Head from 'next/head';
 
 import Loader from '../Loader';
+import NextNProgress from '../../NextNProgress';
+
 import { setTitle } from '../../../actions';
 import getPostBySlugQuery from './getPostBySlugQuery';
 import fixSpecialCharacters from '../../../helpers/fixSpecialCharacters';
@@ -21,7 +22,6 @@ const ButtonBack = () => {
 };
 
 const Post = ({ id, onSetTitle }) => {
-  NProgress.start();
 
   const { loading, error, data } = useQuery(getPostBySlugQuery, {
     variables: {
@@ -39,8 +39,6 @@ const Post = ({ id, onSetTitle }) => {
     return <>Oops, smth went wrong!</>;
   }
 
-  NProgress.done();
-
   const { content, title } = data.post;
   const fixedTitle = parse(fixSpecialCharacters(title));
   onSetTitle(fixedTitle);
@@ -49,6 +47,7 @@ const Post = ({ id, onSetTitle }) => {
       <Head>
         <title>{fixedTitle}</title>
       </Head>
+      <NextNProgress />
       <ButtonBack />
       <article>{parse(content.replace('wp-block-code', 'html'))}</article>
       <ButtonBack />
