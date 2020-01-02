@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CssBaseline, Hidden } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
+
 import styles, { drawerWidth } from '../styles';
 import Navigator from './Navigator';
 import Header from './Header';
