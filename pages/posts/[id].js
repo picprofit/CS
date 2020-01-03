@@ -7,7 +7,7 @@ import withRedux from '../../src/lib/redux';
 import withApollo from '../../src/lib/apollo';
 
 import Layout from '../../src/Components/layout/Layout';
-import Post from '../../src/Components/layout/Post';
+import Post from '../../src/Components/pages/Post';
 
 const PostPage = () => {
   const router = useRouter();

@@ -5,7 +5,7 @@ import withRedux from '../src/lib/redux';
 import withApollo from '../src/lib/apollo';
 
 import Layout from '../src/Components/layout/Layout';
-import Posts from '../src/Components/layout/Posts';
+import Posts from '../src/Components/pages/Posts';
 
 const Index = () => {
   return (

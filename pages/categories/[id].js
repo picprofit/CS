@@ -6,7 +6,7 @@ import withRedux from '../../src/lib/redux';
 import withApollo from '../../src/lib/apollo';
 
 import Layout from '../../src/Components/layout/Layout';
-import Category from '../../src/Components/layout/Category';
+import Category from '../../src/Components/pages/Category';
 
 const PostPage = () => {
   const router = useRouter();

@@ -16,7 +16,7 @@ import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-import Categories from '../Categories';
+import Categories from '../../pages/Categories';
 import styles from './styles';
 
 const Navigator = ({ classes, onDrawerToggle, ...other }) => {

@@ -6,7 +6,7 @@ import { Button } from '@material-ui/core';
 import parse from 'html-react-parser';
 import Head from 'next/head';
 
-import Loader from '../Loader';
+import Loader from '../../layout/Loader';
 import NextNProgress from '../../NextNProgress';
 
 import { setTitle } from '../../../actions';
@@ -15,14 +15,13 @@ import fixSpecialCharacters from '../../../helpers/fixSpecialCharacters';
 
 const ButtonBack = () => {
   return (
-    <Link href={'/'}>
+    <Link href="/">
       <Button variant="outlined">&larr; Back to posts</Button>
     </Link>
   );
 };
 
 const Post = ({ id, onSetTitle }) => {
-
   const { loading, error, data } = useQuery(getPostBySlugQuery, {
     variables: {
       slug: id

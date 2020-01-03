@@ -3,8 +3,8 @@ import { useQuery } from 'react-apollo';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 
-import PostsLayout from '../PostsLayout';
-import Loader from '../Loader';
+import PostsLayout from '../../layout/PostsLayout';
+import Loader from '../../layout/Loader';
 import NextNProgress from '../../NextNProgress';
 
 import { setTitle } from '../../../actions';

@@ -5,7 +5,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import getCategoriesQuery from './getCategoriesQuery';
-import Loader from '../Loader';
+import Loader from '../../layout/Loader';
 
 const Categories = ({ classes }) => {
   const { loading, error, data } = useQuery(getCategoriesQuery);
