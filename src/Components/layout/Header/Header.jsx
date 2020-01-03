@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { compose } from 'redux';
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
@@ -14,8 +14,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 import HeaderIcon from './HeaderIcon';
 import styles from './styles';
+import withRedux from '../../../lib/redux';
 
 const Header = ({ classes, onDrawerToggle, mobileOpen }) => {
+  // TODO: fix title to SSR
   const title = useSelector(state => state.title);
   return (
     <>
@@ -57,9 +59,4 @@ const Header = ({ classes, onDrawerToggle, mobileOpen }) => {
   );
 };
 
-Header.propTypes = {
-  classes: PropTypes.object.isRequired,
-  onDrawerToggle: PropTypes.func.isRequired
-};
-
-export default withStyles(styles)(Header);
+export default compose(withStyles(styles), withRedux)(Header);

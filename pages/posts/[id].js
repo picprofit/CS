@@ -19,8 +19,4 @@ const PostPage = () => {
   );
 };
 
-PostPage.getInitialProps = ({ reduxStore }) => {
-  return {};
-};
-
 export default compose(withApollo, withRedux)(PostPage);

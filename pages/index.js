@@ -15,8 +15,4 @@ const Index = () => {
   );
 };
 
-Index.getInitialProps = ({ reduxStore }) => {
-  return {};
-};
-
 export default compose(withApollo, withRedux)(Index);
