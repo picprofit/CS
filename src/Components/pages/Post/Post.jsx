@@ -34,8 +34,16 @@ const Post = ({ id, onSetTitle }) => {
   }
 
   if (error) {
-    onSetTitle('Failed to load post');
-    return <>Oops, smth went wrong!</>;
+    const notFound = 'Post not found';
+    onSetTitle(notFound);
+    return (
+      <>
+        <Head>
+          <title>{notFound}</title>
+        </Head>
+        <p>{notFound}</p>
+      </>
+    );
   }
 
   const { content, title } = data.post;
