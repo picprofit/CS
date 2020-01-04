@@ -11,7 +11,6 @@ import { setTitle } from '../../../actions';
 import categoryQuery from './categoryQuery';
 
 const Category = ({ id, onSetTitle }) => {
-
   const { loading, error, data } = useQuery(categoryQuery, {
     variables: {
       slug: id
@@ -22,6 +21,7 @@ const Category = ({ id, onSetTitle }) => {
     onSetTitle('Category is loading..');
     return <Loader />;
   }
+
   if (error) {
     onSetTitle('Failed to load category');
     return <>Oops, smth went wrong!</>;
@@ -34,7 +34,9 @@ const Category = ({ id, onSetTitle }) => {
     const { slug: categorySlug } = item.node;
     return id === categorySlug;
   });
-  const pageTitle = category[0].node.name || 'Category';
+  const pageTitle =
+    (category[0] && category[0].node && category[0].node.name) ||
+    'Category not found';
 
   // const pageTitle = 'Category';
   onSetTitle(pageTitle);

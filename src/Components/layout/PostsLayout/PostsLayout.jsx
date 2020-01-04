@@ -8,7 +8,7 @@ import parse from 'html-react-parser';
 import fixSpecialCharacters from '../../../helpers/fixSpecialCharacters';
 
 const PostsLayout = ({ posts, skipFilter = false, filter }) => {
-  let nothingFoundOnFilter = 'Sorry, nothing found on filter';
+  let nothingFound = 'Sorry, nothing found';
   return (
     <List component="nav" aria-label="contacts">
       {posts.edges.map(item => {
@@ -16,9 +16,9 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
         if (!title.includes(filter) && !skipFilter) {
           return null;
         }
-        nothingFoundOnFilter = '';
+        nothingFound = '';
         return (
-          <Link href={`/posts/[id]`} as={`/posts/${slug}`} key={id} passHref>
+          <Link href="/posts/[id]" as={`/posts/${slug}`} key={id} passHref>
             <ListItem button key={id}>
               <ArrowRightIcon />
               {/* parse special symbols but tags */}
@@ -28,7 +28,7 @@ const PostsLayout = ({ posts, skipFilter = false, filter }) => {
           </Link>
         );
       })}
-      {nothingFoundOnFilter}
+      {nothingFound}
     </List>
   );
 };
