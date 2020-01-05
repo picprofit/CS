@@ -2,8 +2,28 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## WordPress/React personal stylesheet collection
 
-###[Live demo](https://cs.kskonovalov.me)
+##Motivation
+Get one point web service for fast search some common using code snippets
 
-Project uses WordPress as a Backend (via WP built in rest API and GraphQL) and React as a frontend.
+##Live demo: 
+https://cs.kskonovalov.me
 
-I also used [PaperBase](https://themes.material-ui.com/themes/paperbase/) theme
+##Description
+
+Project works on NextJS for server-side rendering (SSR).
+
+After page loads, on client side the app works on React.
+
+As a data source i used WordPress Rest Api through GraphQL (with Apollo on application part) 
+
+I also used [PaperBase](https://themes.material-ui.com/themes/paperbase/) theme.
+
+##Usage:
+>git clone https://github.com/picprofit/CS.git
+>
+>npm install
+>
+>npm run dev
+
+##Features
+* todo :)
