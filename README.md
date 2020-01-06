@@ -2,13 +2,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## WordPress/React personal stylesheet collection
 
-##Motivation
+## Motivation
 Get one point web service for fast search some common using code snippets
 
-##Live demo: 
+## Live demo: 
 https://cs.kskonovalov.me
 
-##Description
+## Description
 
 Project works on NextJS for server-side rendering (SSR).
 
@@ -18,14 +18,14 @@ As a data source i used WordPress Rest Api through GraphQL (with Apollo on appli
 
 I also used [PaperBase](https://themes.material-ui.com/themes/paperbase/) theme.
 
-##Usage:
+## Usage:
 >git clone https://github.com/picprofit/CS.git
 >
 >npm install
 >
 >npm run dev
 
-##Features
+## Features
 * Server-side rendering
 * switch between pages without full page reload
 * WordPress admin to manage content
@@ -33,7 +33,7 @@ I also used [PaperBase](https://themes.material-ui.com/themes/paperbase/) theme.
 * icon easter egg
 
 
-##Main Tech stack
+## Main Tech stack
 * React
 * Next.js
 * Redux
