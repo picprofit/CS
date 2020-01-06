@@ -26,4 +26,18 @@ I also used [PaperBase](https://themes.material-ui.com/themes/paperbase/) theme.
 >npm run dev
 
 ##Features
-* todo :)
+* Server-side rendering
+* switch between pages without full page reload
+* WordPress admin to manage content
+* Live filter & search
+* icon easter egg
+
+
+##Main Tech stack
+* React
+* Next.js
+* Redux
+* GraphQL
+* Apollo
+* Material ui
+* WordPress
