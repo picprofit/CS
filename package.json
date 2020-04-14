@@ -33,7 +33,7 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "start-csr": "react-scripts start",
     "build-ssr": "react-scripts build",
