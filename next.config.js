@@ -7,20 +7,21 @@ const config = require('./src/config');
 const { API_URL } = config;
 
 const postsQuery = require('./src/Components/pages/Posts/getPosts').default;
-const categoriesQuery = require('./src/Components/pages/Categories/getCategories').default;
+const categoriesQuery = require('./src/Components/pages/Categories/getCategories')
+  .default;
 
 const getPaths = async (query, type) => {
   const paths = {};
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       query: `{
        ${query}
-    }`,
-    }),
+    }`
+    })
   });
   const data = await res.json();
   const result = data.data[type];
@@ -33,19 +34,21 @@ const getPaths = async (query, type) => {
   return paths;
 };
 
-module.exports = withCSS(withSASS({
-  exportTrailingSlash: true,
-  exportPathMap: async () => {
-    const paths = {
-      '/': { page: '/' },
-      '/search': { page: '/search' }
-    };
+module.exports = withCSS(
+  withSASS({
+    exportTrailingSlash: true,
+    exportPathMap: async () => {
+      const paths = {
+        '/': { page: '/' },
+        '/search': { page: '/search' }
+      };
 
-    /* get pages */
-    Object.assign(paths, await getPaths(postsQuery, 'posts'));
-    /* get categories */
-    Object.assign(paths, await getPaths(categoriesQuery, 'categories'));
+      /* get pages */
+      Object.assign(paths, await getPaths(postsQuery, 'posts'));
+      /* get categories */
+      Object.assign(paths, await getPaths(categoriesQuery, 'categories'));
 
-    return paths;
-  }
-}));
+      return paths;
+    }
+  })
+);
