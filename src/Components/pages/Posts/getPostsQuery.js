@@ -1,23 +1,9 @@
 import gql from 'graphql-tag';
 
+import getPosts from './getPosts';
+
 const getPostsQuery = gql`
-    query GetPosts {
-        posts(first: 999, where: {orderby: {field: DATE, order: DESC}}) {
-            edges {
-                node {
-                    id
-                    title
-                    slug
-                }
-            }
-            pageInfo {
-                endCursor
-                startCursor
-                hasNextPage
-                hasPreviousPage
-            }
-        }
-    }
+    query GetPosts {${getPosts.default}}
 `;
 
 export default getPostsQuery;

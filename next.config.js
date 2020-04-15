@@ -2,26 +2,26 @@ const withCSS = require('@zeit/next-css');
 const withSASS = require('@zeit/next-sass');
 const fetch = require('isomorphic-unfetch');
 
+const config = require('./src/config');
 
-// const getPosts = require('./src/Components/pages/Posts/getPosts');
-const query = ` 
-        posts(first: 999, where: {orderby: {field: DATE, order: DESC}}) {
-            edges {
-                node {
-                    id
-                    title
-                    slug
-                }
-            }
-            pageInfo {
-                endCursor
-                startCursor
-                hasNextPage
-                hasPreviousPage
-            }
-        }
-    
-`;
+const { API_URL } = config;
+
+const query = require('./src/Components/pages/Posts/getPosts').default;
+// const query = `posts(first: 999, where: {orderby: {field: DATE, order: DESC}}) {
+//             edges {
+//                 node {
+//                     id
+//                     title
+//                     slug
+//                 }
+//             }
+//             pageInfo {
+//                 endCursor
+//                 startCursor
+//                 hasNextPage
+//                 hasPreviousPage
+//             }
+//         }`;
 
 module.exports = withCSS(withSASS({
   exportTrailingSlash: true,
@@ -31,7 +31,7 @@ module.exports = withCSS(withSASS({
       '/search': { page: '/search' }
     };
 
-    const res = await fetch('http://localhost/cs/backend/graphql', {
+    const res = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
